@@ -1,0 +1,21 @@
+.footer {
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    &__copyrights{
+        position: relative;
+        color: $color-white;
+        font-size: .9rem;
+        &::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -.5rem;
+            height: 2rem;
+            width: 3px;
+            background-color: $color-white;
+            border-radius: 25%;
+            transform: translateX(-50%) translateY(-.3rem);
+        }
+    }
+}
