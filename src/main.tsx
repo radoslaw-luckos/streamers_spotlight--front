@@ -6,6 +6,8 @@ import ErrorPage from './pages/ErrorPage';
 import StreamerPage from './pages/StreamerPage';
 import HomePage from './pages/HomePage';
 import Layout from './layout/Layout';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 const router = createBrowserRouter([
 	{
@@ -25,8 +27,13 @@ const router = createBrowserRouter([
 	},
 ]);
 
+const queryClient = new QueryClient();
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 	<React.StrictMode>
-		<RouterProvider router={router} />
+		<QueryClientProvider client={queryClient}>
+			<RouterProvider router={router} />
+			<ReactQueryDevtools initialIsOpen={false} />
+		</QueryClientProvider>
 	</React.StrictMode>
 );

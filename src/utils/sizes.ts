@@ -1,4 +1,4 @@
 export enum LogoSize {
     Small = 'logo--s',
-    Big = 'logo--xl'
+    Big = 'logo--l'
 }
