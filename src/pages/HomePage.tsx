@@ -15,30 +15,9 @@ const HomePage = () => {
 		queryFn: getStreamers,
 	});
 
-	// if (isLoading) return <p className='info'>Loading</p>;
+	if (isLoading) return <p className='info'>Loading</p>;
 
-	// if (error) return <p className='error'>{`An error has occurred: ${error.message}`}</p>;
-
-	const mockList: StreamerType[] = [
-		{
-			_id: '64a1ed88a7ad026874bdda70',
-			name: 'Radek',
-			desc: 'doiashfdasf',
-			platform: 'YB',
-			upvotes: 12,
-			downvotes: 15,
-			__v: 0,
-		},
-		{
-			_id: '64a1ed88a7ad026874bddb70',
-			name: 'Radek',
-			desc: 'doiashfdasf',
-			platform: 'YB',
-			upvotes: 12,
-			downvotes: 15,
-			__v: 0,
-		},
-	];
+	if (error) return <p className='error'>{`An error has occurred: ${error.message}`}</p>;
 
 	return (
 		<main className='homePageContainer'>
@@ -53,7 +32,7 @@ const HomePage = () => {
 				{isFormOpened && <AddStreamerForm />}
 			</section>
 			<section className='streamers'>
-				<List items={mockList} />
+				<List items={data} />
 			</section>
 		</main>
 	);

@@ -1,38 +1,46 @@
 import Box from '../layout/Box';
-import { StreamerType } from '../utils/types';
 import { SlLike, SlDislike } from 'react-icons/sl';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useParams } from 'react-router-dom';
+import { getStreamer } from '../api/Streamers';
 
 const StreamerPage = () => {
-	const MockStreamer: StreamerType = {
-		_id: '64a1ed88a7ad026874bdda70',
-		name: 'Radek',
-		desc: 'Lorem ipsum dolor sit amet consectetur. Auctor enim in vel nisi netus lobortis leo. Ornare ultricies metus etiam aliquam odio. Vitae dui diam hendrerit viverra in. Mattis magna orci.',
-		platform: 'YouTube',
-		upvotes: 12,
-		downvotes: 15,
-		__v: 0,
-	};
+	const { id } = useParams();
+
+	const queryClient = useQueryClient();
+
+	const { isLoading, error, data } = useQuery({
+		queryKey: ['streamer'],
+		queryFn: () => getStreamer(id),
+	});
+
+	if (isLoading) return <p className='info'>Loading</p>;
+
+	if (error) return <p className='error'>{`An error has occurred: ${error.message}`}</p>;
 
 	return (
-		<main>
-			<Box>
-				<h2>{MockStreamer.name}</h2>
-				<img
-					src='/streamers_spotlight--front/src/assets/avatar.jpg'
-					alt='Streamers avatar'
-				/>
-				<p className='platformTag'>{MockStreamer.platform}</p>
-				<p className='stremerDesc'>{MockStreamer.desc}</p>
-				<div className='votes'>
-					<button className='votes__btn votes__btn--upvote'>
+		<Box>
+			<main className='streamerPage'>
+				<h2 className='streamerPage__name'>{data.name}</h2>
+				<div className='streamerPage__avatar'>
+					<img
+						src='https://static-cdn.jtvnw.net/jtv_user_pictures/asmongold-profile_image-f7ddcbd0332f5d28-300x300.png'
+						alt='Streamers avatar'
+					/>
+				</div>
+
+				<p className='streamerPage__platformTag'>{data.platform}</p>
+				<p className='streamerPage__desc'>{data.desc}</p>
+				<div className='streamerPage__votes flex-row'>
+					<button className='btn btn--upvote'>
 						<SlLike />
 					</button>
-					<button className='votes__btn votes__btn--downvote'>
+					<button className='btn btn--downvote'>
 						<SlDislike />
 					</button>
 				</div>
-			</Box>
-		</main>
+			</main>
+		</Box>
 	);
 };
 
