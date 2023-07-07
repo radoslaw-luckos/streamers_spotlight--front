@@ -1,19 +1,19 @@
 import React from 'react';
-import { useRouteError } from 'react-router-dom';
+import { Link, useRouteError } from 'react-router-dom';
 
-type Props = {};
-
-const ErrorPage = (props: Props) => {
+const ErrorPage = () => {
 	const error = useRouteError();
-	console.log(error);
 
 	return (
-		<main>
+		<main className='errorPage'>
 			<h1>Oops!</h1>
 			<p>Sorry, an unexpected error has occurred.</p>
-			<p>
+			<p className='error'>
 				{error.status} {error.data}
 			</p>
+			<button className='errorPage__btn'>
+				<Link to={''}>Try to get home page!</Link>
+			</button>
 		</main>
 	);
 };
