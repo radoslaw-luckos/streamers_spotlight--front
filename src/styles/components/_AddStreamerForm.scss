@@ -1,0 +1,58 @@
+.addStreamerForm {
+    color: $color-white;
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+    
+    &__inputGroup{
+        margin-bottom: .6rem;
+        label{
+            display: block;
+            width: 100%;
+            text-align: left;
+            margin-bottom: 0.25rem;
+        }
+        .error{
+            margin-top: .25rem;
+        }
+        input, textarea {
+            background-color: transparent;
+            border: 2px solid $color-secondary;
+            outline: none;
+            border-radius: .3rem;
+            caret-color: $color-white;
+            color: $color-white;
+            &:focus {
+                box-shadow: 0px 0px 5px 2px $color-secondary;
+            }
+        }
+        input{       
+            padding:  0.2rem .7rem;
+        }
+        textarea {
+            width: 100%;
+            padding:  0.5rem .7rem;
+        }
+        select{
+        padding: .2rem 2rem;
+        border-radius: .3rem;
+        background-color: $color-secondary;
+        border: none;
+        color: $color-white;
+        
+    }
+}
+&__submitBtn{
+    margin-bottom: 0;
+    height: 2.5rem;
+    justify-content: center;
+    background-color: transparent;
+    border-radius: .3rem;
+    cursor: pointer;
+    color: $color-green;
+        border-color: $color-green;
+        &:hover{
+            box-shadow: 0px 0px 5px 2px $color-green;
+        }
+    }
+}

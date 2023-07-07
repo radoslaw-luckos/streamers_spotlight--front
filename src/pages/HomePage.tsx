@@ -2,8 +2,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 import { getStreamers } from '../api/Streamers';
 import List from '../layout/List';
-import { StreamerType } from '../utils/types';
-import { IoChevronDown } from 'react-icons/io5';
+import { IoChevronDown, IoChevronUp } from 'react-icons/io5';
 import AddStreamerForm from '../components/AddStreamerForm';
 
 const HomePage = () => {
@@ -27,7 +26,7 @@ const HomePage = () => {
 					onClick={() => setFormOpened(!isFormOpened)}
 				>
 					<span>Add a streamer</span>
-					<IoChevronDown />
+					{isFormOpened ? <IoChevronUp /> : <IoChevronDown />}
 				</button>
 				{isFormOpened && <AddStreamerForm />}
 			</section>

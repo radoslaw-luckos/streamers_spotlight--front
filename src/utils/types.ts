@@ -7,3 +7,10 @@ export type StreamerType = {
     downvotes: number,
     __v: number,
 }
+export type PostStreamerType = {
+    name: string,
+    desc: string,
+    platform: string,
+    upvotes: number,
+    downvotes: number,
+}
