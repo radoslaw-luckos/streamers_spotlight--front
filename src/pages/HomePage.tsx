@@ -4,6 +4,7 @@ import { getStreamers } from '../api/Streamers';
 import List from '../layout/List';
 import { IoChevronDown, IoChevronUp } from 'react-icons/io5';
 import AddStreamerForm from '../components/AddStreamerForm';
+import { motion as m } from 'framer-motion';
 
 const HomePage = () => {
 	const [isFormOpened, setFormOpened] = useState<boolean>(false);
@@ -19,7 +20,12 @@ const HomePage = () => {
 	if (error) return <p className='error'>{`An error has occurred: ${error.message}`}</p>;
 
 	return (
-		<main className='homePageContainer'>
+		<m.main
+			className='homePageContainer'
+			initial={{ opacity: 0, x: -20 }}
+			animate={{ opacity: 1, x: 0 }}
+			transition={{ ease: 'easeOut', duration: 0.65 }}
+		>
 			<section className='form'>
 				<button
 					className='toggleFormBtn'
@@ -31,9 +37,10 @@ const HomePage = () => {
 				{isFormOpened && <AddStreamerForm />}
 			</section>
 			<section className='streamers'>
+				<h2 className='streamers__title'>Streamers</h2>
 				<List items={data} />
 			</section>
-		</main>
+		</m.main>
 	);
 };
 

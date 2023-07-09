@@ -13,7 +13,7 @@ const List = ({ items }: Props) => {
 					{' '}
 					Sadly, there are no streamers yet...
 					<br />
-					Feel free to add one in the form above!
+					Feel free to add one using the form!
 				</p>
 			)}
 			{items.map((item) => (

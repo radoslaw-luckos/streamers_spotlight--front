@@ -5,6 +5,13 @@
         margin-bottom: 1.5rem;
         width: 100%;
     }
+    .streamers{
+        &__title{
+            color: $color-secondary;
+            margin-bottom: 16px;
+            padding: .7rem 0;
+        }
+    }
     .form {
         .toggleFormBtn {
             width: 100%;
@@ -17,7 +24,30 @@
             font-size: 1.25rem;
             padding: .7rem 1rem;
             border-radius: 0.3125rem;
-            border: none;
+            border: 3px solid $color-secondary;
         }
     }
+}
+
+@media (min-width: 900px) {
+
+    .homePageContainer {
+        max-width: 1200px;
+        display: flex;
+        flex-flow: row-reverse nowrap;
+        gap: 2rem;
+        .form{
+            position: relative;
+            &::before{
+                content: '';
+                position: absolute;
+                top: 0;
+                left: calc(-1rem - 1px);
+                width: 2px;
+                height: 120%;
+                background-color: $color-secondary;
+            }
+        }
+    }
+    
 }

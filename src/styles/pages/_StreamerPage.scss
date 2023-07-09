@@ -1,4 +1,4 @@
-.streamerPage{
+.streamerPageContainer{
     width: 100%;
     display: flex;
     flex-flow: column nowrap;
@@ -49,7 +49,8 @@
     }
     &__vote{
         width: 100%;
-        justify-content: space-between;
+        justify-content: center;
+        gap: 2rem;
         padding: 0 .5rem;
         .btn{
             height: 2.5rem;
@@ -76,4 +77,24 @@
             }
         }
     }
+}
+@media (min-width: 900px) {
+
+    .streamerPageContainer {
+        display: flex;
+        gap: 2rem;
+        div{
+            max-width: 1200px;
+        }
+        &__desc{
+            margin: 2rem;
+            font-size: 1rem;
+            max-width: 900px;
+        }
+        &__vote{
+            justify-content: center;
+            gap: 2rem;
+        }
+    }
+    
 }

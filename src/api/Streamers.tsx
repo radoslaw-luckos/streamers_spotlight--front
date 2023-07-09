@@ -14,16 +14,16 @@ export const upvoteStreamer = (id: string | undefined, prevUpvotes: number) => {
 		upvotes: prevUpvotes + 1,
 	};
 
-	axios.put(`http://localhost:5000/streamer/${id}/vote`, updatedStremer);
+	return axios.put(`http://localhost:5000/streamer/${id}/vote`, updatedStremer);
 };
 export const downvoteStreamer = (id: string | undefined, prevDownvotes: number) => {
 	const updatedStremer = {
 		downvotes: prevDownvotes + 1,
 	};
 
-	axios.put(`http://localhost:5000/streamer/${id}/vote`, updatedStremer);
+	return axios.put(`http://localhost:5000/streamer/${id}/vote`, updatedStremer);
 };
 
 export const postStreamer = (data: PostStreamerType) => {
-	axios.post('http://localhost:5000/streamers', data);
+	return axios.post('http://localhost:5000/streamers', data);
 };

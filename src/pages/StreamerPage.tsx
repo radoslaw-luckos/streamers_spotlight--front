@@ -3,6 +3,7 @@ import { SlLike, SlDislike } from 'react-icons/sl';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import { downvoteStreamer, getStreamer, upvoteStreamer } from '../api/Streamers';
+import { motion as m } from 'framer-motion';
 
 const StreamerPage = () => {
 	const { id } = useParams();
@@ -34,18 +35,23 @@ const StreamerPage = () => {
 	if (error) return <p className='error'>{`An error has occurred: ${error.message}`}</p>;
 
 	return (
-		<Box>
-			<main className='streamerPage'>
-				<h2 className='streamerPage__name'>{data.name}</h2>
-				<div className='streamerPage__avatar'>
+		<m.main
+			className='streamerPageContainer'
+			initial={{ opacity: 0, x: -20 }}
+			animate={{ opacity: 1, x: 0 }}
+			transition={{ ease: 'easeOut', duration: 0.65 }}
+		>
+			<Box>
+				<h2 className='streamerPageContainer__name'>{data.name}</h2>
+				<div className='streamerPageContainer__avatar'>
 					<img
 						src='https://static-cdn.jtvnw.net/jtv_user_pictures/asmongold-profile_image-f7ddcbd0332f5d28-300x300.png'
 						alt='Streamers avatar'
 					/>
 				</div>
 
-				<p className='streamerPage__platformTag'>{data.platform}</p>
-				<div className='streamerPage__votes flex-row '>
+				<p className='streamerPageContainer__platformTag'>{data.platform}</p>
+				<div className='streamerPageContainer__votes flex-row '>
 					<p className='flex-row vote vote--upvote'>
 						<SlLike />
 						<span>{data.upvotes}</span>
@@ -55,8 +61,8 @@ const StreamerPage = () => {
 						<span>{data.downvotes}</span>
 					</p>
 				</div>
-				<p className='streamerPage__desc'>{data.desc}</p>
-				<div className='streamerPage__vote flex-row'>
+				<p className='streamerPageContainer__desc'>{data.desc}</p>
+				<div className='streamerPageContainer__vote flex-row'>
 					<button
 						className='btn btn--upvote'
 						onClick={() => upvoteMutation.mutate()}
@@ -71,8 +77,8 @@ const StreamerPage = () => {
 						<SlDislike />
 					</button>
 				</div>
-			</main>
-		</Box>
+			</Box>
+		</m.main>
 	);
 };
 
